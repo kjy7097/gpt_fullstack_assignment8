@@ -8,7 +8,6 @@ from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 
 import asyncio
-from fake_useragent import UserAgent
 import os
 
 os.environ["OPENAI_API_KEY"] = "dummy_api_key"
@@ -37,7 +36,6 @@ Your turn!
 Question: {question}
 """
 )
-ua = UserAgent()
 
 asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
 
@@ -141,7 +139,6 @@ def load_website(url):
         parsing_function=parse_page,
     )
     loader.requests_per_second = 1
-    loader.headers = {"User-Agent": ua.random}
     docs = loader.load_and_split(text_splitter=splitter)
     vector_store = FAISS.from_documents(docs, OpenAIEmbeddings())
     return vector_store.as_retriever()
