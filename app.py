@@ -7,7 +7,6 @@ from langchain.schema.runnable import RunnablePassthrough, RunnableLambda
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 
-import asyncio
 import os
 
 os.environ["OPENAI_API_KEY"] = "dummy_api_key"
@@ -36,8 +35,6 @@ Your turn!
 Question: {question}
 """
 )
-
-asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
 
 st.set_page_config(page_title="Site GPT", page_icon="🌏")
 st.title("Site GPT")
