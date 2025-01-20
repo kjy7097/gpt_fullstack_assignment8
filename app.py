@@ -135,7 +135,7 @@ def load_website(url):
         url,
         filter_urls=[
             r"^(.*\/ai-gateway\/).*",
-            r"^(.*\/workers\/).*",
+            r"^(.*\/workers-ai\/).*",
             r"^(.*\/vectorize\/).*",
         ],
         parsing_function=parse_page,
